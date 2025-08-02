@@ -1,0 +1,585 @@
+type: collection.insomnia.rest/5.0
+name: PSN API Express Routes
+meta:
+  id: wrk_4cf0b9d6b72144df8177a09e067821c8
+  created: 1754138001125
+  modified: 1754138001125
+  description: ""
+collection:
+  - name: Users
+    meta:
+      id: fld_db35765715154c7b96f4a831a5944eab
+      created: 1704067200000
+      modified: 1704067200000
+      sortKey: -1704067200000
+      description: Routes pour les utilisateurs PSN
+    children:
+      - url: "{{ _.base_url }}/api/users/profile/account/"
+        name: Profil utilisateur par ID de compte
+        meta:
+          id: req_258bc446b21847fc85deeef9aa86de21
+          created: 1704067200000
+          modified: 1754167221226
+          isPrivate: false
+          description: Récupère le profil d'un utilisateur par son ID de compte
+          sortKey: -1704067200001
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "accountId": "me",
+              "options": {
+                "includeTrophies": true,
+                "includePresence": true
+              },
+              "npsso": "{{ _.npsso }}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/users/friends"
+        name: Amis d'un utilisateur
+        meta:
+          id: req_721b1dca384c4523b4eebfc8638eb2db
+          created: 1704067200000
+          modified: 1754167173764
+          isPrivate: false
+          description: Récupère la liste des amis d'un utilisateur
+          sortKey: -1704067200003
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "accountId": "me",
+              "options": {
+                "limit": 50,
+                "offset": 0
+              },
+              "npsso": "{{ _.npsso }}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/users/profile/username/"
+        name: Profil utilisateur par nom d'utilisateur
+        meta:
+          id: req_7a14489450b042b5a3663aaa72abca39
+          created: 1704067200000
+          modified: 1754167231860
+          isPrivate: false
+          description: Récupère le profil d'un utilisateur par son nom d'utilisateur
+          sortKey: -1704067200000
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "me",
+              "options": {
+                "includeTrophies": true,
+                "includePresence": true
+              },
+              "npsso": "{{ _.npsso }}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/users/shareable-link"
+        name: Lien partageable du profil
+        meta:
+          id: req_87acc36ad8574edfb95f6c6d4cfb3e19
+          created: 1704067200000
+          modified: 1754167186147
+          isPrivate: false
+          description: Génère un lien partageable pour le profil d'un utilisateur
+          sortKey: -1704067200002
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "accountId": "me",
+              "options": {
+                "includeTrophies": true
+              },
+              "npsso": "{{ _.npsso }}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/users/devices"
+        name: Appareils d'un compte
+        meta:
+          id: req_974fa6c7f7374f80bc64b55da16e11de
+          created: 1704067200000
+          modified: 1754167412563
+          isPrivate: false
+          description: Récupère les appareils associés à un compte
+          sortKey: -1704067200008
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "options": {
+                "headerOverrides": "Accept-Language"
+              },
+              "npsso": "{{ _.npsso }}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/users/recently-played"
+        name: Jeux récemment joués
+        meta:
+          id: req_a111101030b34a499998ef4bb9f01b4f
+          created: 1704067200000
+          modified: 1754167143394
+          isPrivate: false
+          description: Récupère les jeux récemment joués par un utilisateur
+          sortKey: -1704067200005
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "accountId": "me",
+              "options": {
+                "limit": 3,
+                "offset": 0
+              },
+              "npsso": "{{ _.npsso }}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/users/presence"
+        name: Présence basique d'un utilisateur
+        meta:
+          id: req_abff8bb115a542adb211341656c7e057
+          created: 1704067200000
+          modified: 1754167157122
+          isPrivate: false
+          description: Récupère la présence basique d'un utilisateur
+          sortKey: -1704067200004
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "accountId": "me",
+              "options": {
+                "includeOnlineStatus": true
+              },
+              "npsso": "{{ _.npsso }}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/users/region/"
+        name: Région d'un utilisateur
+        meta:
+          id: req_ec4d43379d0d4392a96dc31e1f4b76e0
+          created: 1704067200000
+          modified: 1754167417129
+          isPrivate: false
+          description: Récupère la région d'un utilisateur
+          sortKey: -1704067200007
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "me",
+            	"locales": "fr",
+              "npsso": "{{ _.npsso }}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/api/users/played-games"
+        name: Jeux joués par un utilisateur
+        meta:
+          id: req_fadfa2f8b2f6452d87bef3f306217afe
+          created: 1704067200000
+          modified: 1754167128543
+          isPrivate: false
+          description: Récupère tous les jeux joués par un utilisateur
+          sortKey: -1704067200006
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+              "accountId": "me",
+              "options": {
+                "limit": 10,
+                "offset":0,
+               "categories":["ps4_game", "ps5_native_game", "pspc_game", "unknown"]
+              },
+              "npsso": "{{ _.npsso }}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: title tropie
+    meta:
+      id: fld_aa8c0f56e3964dd9a8dfbc2444716e21
+      created: 1754163128817
+      modified: 1754165228314
+      sortKey: -1754163128817
+      description: ""
+    children:
+      - url: "{{_.base_url}}/api/trophies/title"
+        name: Trophées d'un titre
+        meta:
+          id: req_25bb8287e9ca4e3da0bed0720a712d07
+          created: 1754163151375
+          modified: 1754166959690
+          isPrivate: false
+          description: ""
+          sortKey: -1754163151375
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {     
+            	"npCommunicationId": "NPWR20188_00",     
+            	"trophyGroupId": "all",     
+            	"options": {       
+            		"npServiceName": "trophy",       
+            		"limit": 50,       
+            		"offset": 0     
+            	},     
+            	"npsso": "{{_.npsso}}"   
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{_.base_url}}/api/trophies/title/groups"
+        name: Groupes de trophées d'un titre
+        meta:
+          id: req_c76ea906d4a74f799c7bbba58af1e989
+          created: 1754163282250
+          modified: 1754166753470
+          isPrivate: false
+          description: ""
+          sortKey: -1754163282250
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{     "npCommunicationId": "NPWR20188_00",     "options":
+            {       "npServiceName": "trophy2"     },     "npsso":
+            "{{_.npsso}}"   }'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: userTrophies
+    meta:
+      id: fld_0f0b6aae6f0343de9918ee86d3b88109
+      created: 1754164683667
+      modified: 1754164683667
+      sortKey: -1754164683667
+      description: ""
+    children:
+      - url: "{{_.base_url}}/api/users/trophy-groups"
+        name: Gains de groupes de trophées pour un titre
+        meta:
+          id: req_fdc060aad88845c3b6308489cb1c4b4a
+          created: 1754164696037
+          modified: 1754166764842
+          isPrivate: false
+          description: ""
+          sortKey: -1754165328830
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {     
+            	"accountId": "me",     
+            	"npCommunicationId": "NPWR07810_00",     
+            	"options": {       
+            		"npServiceName": "trophy"     },     
+            	"npsso": "{{_.npsso}}"   
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{_.base_url}}/api/users/titles"
+        name: Titres d'un utilisateur
+        meta:
+          id: req_007a851b30664d0eb28a3d852792edf7
+          created: 1754165228598
+          modified: 1754166921823
+          isPrivate: false
+          description: ""
+          sortKey: -1754165328730
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {     
+            	"accountId": "me",     
+            	"options": {       
+            		"limit": 1,       
+            		"offset": 0     
+            	},     
+            	"npsso": "{{_.npsso}}"   }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{_.base_url}}/api/users/trophies/earned"
+        name: Trophées gagnés pour un titre
+        meta:
+          id: req_cad36fc2d938439b8beccf0d7f77a8b1
+          created: 1754165391950
+          modified: 1754166887280
+          isPrivate: false
+          description: ""
+          sortKey: -1754165391950
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {     
+            	"accountId": "me",     
+            	"npCommunicationId": "NPWR07810_00",     
+            	"trophyGroupId": "all",     
+            	"options": {       
+            		"npServiceName": "trophy",       
+            		"limit": 50,       
+            		"offset": 0     
+            	},     
+            	"npsso": "{{_.npsso}}"   
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{_.base_url}}/api/users/trophy-summary"
+        name: Résumé du profil trophées
+        meta:
+          id: req_cc10ec4edc144e99a992d5802b64ea2a
+          created: 1754165644196
+          modified: 1754166856836
+          isPrivate: false
+          description: ""
+          sortKey: -1754165644196
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {     
+            	"accountId": "me",     
+            	"options": {       
+            		"headerOverrides": {         
+            			"Accept-Language": "fr-FR"       
+            		}     
+            	},     
+            	"npsso": "{{_.npsso}}"   
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{_.base_url}}/api/users/trophies/specific-titles"
+        name: Trophées pour des titres spécifiques
+        meta:
+          id: req_840ed87b17bf42019ef23b593953f8d6
+          created: 1754165716395
+          modified: 1754166834038
+          isPrivate: false
+          description: ""
+          sortKey: -1754165716395
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {     
+            	"accountId": "me",     
+            	"options": {       
+            		"npTitleIds": "CUSA00970_00",       
+            		"includeNotEarnedTrophyIds": true     
+            	},    
+            	"npsso": "{{_.npsso}}"   
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Recherche universelle
+    meta:
+      id: fld_53ae1ae895ac4808b68885d5e0b8cc0a
+      created: 1754167585339
+      modified: 1754167585339
+      sortKey: -1754167585339
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/api/search/universal"
+        name: Rechercher un utilisateur par nom
+        meta:
+          id: req_94c9bb6808d14b04be1ad3f24a75c974
+          created: 1754167603869
+          modified: 1754168102577
+          isPrivate: false
+          description: ""
+          sortKey: -1754167603869
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{     "searchTerm": "ana_tide",     "domain":
+            "SocialAllAccounts",     "npsso": "{{_.npsso}}"   }'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_499c2dac1c8fba2f9564a60e33bf5a4e03b2014f
+    created: 1754138001149
+    modified: 1754138001149
+environments:
+  name: Development
+  meta:
+    id: env_2aa89a03840d4edb98fc085cc7718a61
+    created: 1704067200000
+    modified: 1754168040752
+    isPrivate: false
+  data:
+    base_url: http://localhost:3000
+    npsso: votre npsso
