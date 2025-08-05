@@ -10,8 +10,8 @@ const universalSearchRoutes = require('./src/routes/universalSearch');
 // Création d'une instance d'application Express
 const app = express()
 
-// Définition du port d'écoute
-const port = 3000;
+// Définition du port d'écoute (compatible cPanel)
+const port = process.env.PORT || 3000;
 
 // Middleware pour parser les requêtes avec un corps en JSON
 app.use(express.json());

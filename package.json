@@ -2,11 +2,12 @@
   "name": "psn-api-express-routes",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "node test.js",
     "start": "NODE_ENV=production node app.js",
-    "dev": "NODE_ENV=development nodemon app.js"
+    "dev": "NODE_ENV=development nodemon app.js",
+    "cpanel": "NODE_ENV=production PORT=3000 node app.js"
   },
   "keywords": [],
   "author": "",
