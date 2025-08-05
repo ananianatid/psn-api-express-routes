@@ -192,12 +192,31 @@ router.post('/users/recently-played', async (req, res) => {
       });
     }
 
+    // Validation des options si fournies
+    if (options) {
+      if (options.limit && (typeof options.limit !== 'number' || options.limit <= 0)) {
+        return res.status(400).json({
+          error: "La limite doit être un nombre positif"
+        });
+      }
+      
+      if (options.categories && Array.isArray(options.categories)) {
+        const validCategories = ['ps4_game', 'ps5_native_game'];
+        const invalidCategories = options.categories.filter(cat => !validCategories.includes(cat));
+        if (invalidCategories.length > 0) {
+          return res.status(400).json({
+            error: `Catégories invalides: ${invalidCategories.join(', ')}. Catégories valides: ${validCategories.join(', ')}`
+          });
+        }
+      }
+    }
+
     // Authentification avec PSN
     const accessCode = await exchangeNpssoForAccessCode(npsso);
     const authorization = await exchangeAccessCodeForAuthTokens(accessCode);
 
-    // Récupération des jeux récemment joués
-    const recentlyPlayedGames = await getRecentlyPlayedGames(authorization, accountId);
+    // Récupération des jeux récemment joués avec les options
+    const recentlyPlayedGames = await getRecentlyPlayedGames(authorization, options || {});
 
     res.status(200).json({
       message: "Jeux récemment joués récupérés avec succès.",
