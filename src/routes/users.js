@@ -17,8 +17,8 @@ const {
 // Profil utilisateur par nom d'utilisateur getProfileFromUserName
 router.post('/users/profile/username/', async (req, res) => {
   try {
-    // Les paramètres et options sont récupérés depuis req.body
-    const { username, options, npsso } = req.body;
+    // Les paramètres sont récupérés depuis req.body
+    const { username, npsso } = req.body;
 
     // Validation des paramètres requis
     if (!username || !npsso) {
