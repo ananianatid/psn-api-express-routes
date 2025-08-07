@@ -51,7 +51,7 @@ router.post('/users/profile/username/', async (req, res) => {
 router.post('/users/profile/account/', async (req, res) => {
   try {
     // Les paramètres et options sont récupérés depuis req.body
-    const { accountId, options, npsso } = req.body;
+    const { accountId, npsso } = req.body;
 
     // Validation des paramètres requis
     if (!accountId || !npsso) {
@@ -84,7 +84,7 @@ router.post('/users/profile/account/', async (req, res) => {
 router.post('/users/shareable-link', async (req, res) => {
   try {
     // Les paramètres et options sont récupérés depuis req.body
-    const { accountId, options, npsso } = req.body;
+    const { accountId, npsso } = req.body;
 
     // Validation des paramètres requis
     if (!accountId || !npsso) {
