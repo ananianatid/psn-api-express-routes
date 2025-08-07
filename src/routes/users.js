@@ -117,7 +117,7 @@ router.post('/users/shareable-link', async (req, res) => {
 router.post('/users/friends', async (req, res) => {
   try {
     // Les paramètres et options sont récupérés depuis req.body
-    const { accountId, options, npsso } = req.body;
+    const { accountId, npsso } = req.body;
 
     // Validation des paramètres requis
     if (!accountId || !npsso) {
