@@ -183,12 +183,12 @@ router.post('/users/presence', async (req, res) => {
 router.post('/users/recently-played', async (req, res) => {
   try {
     // Les paramètres et options sont récupérés depuis req.body
-    const { accountId, options, npsso } = req.body;
+    const {options, npsso } = req.body;
 
     // Validation des paramètres requis
-    if (!accountId || !npsso) {
+    if (!npsso) {
       return res.status(400).json({
-        error: "L'ID de compte et le token NPSSO sont requis"
+        error: "Le token NPSSO est requis"
       });
     }
 
